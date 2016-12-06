@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="LatestTimeLine">
+        <attr name="me_point_color" format="color"/>
+        <attr name="me_point_size" format="dimension"/>
+        <attr name="me_text_color" format="color"/>
+        <attr name="me_text_size" format="dimension"/>
+        <attr name="me_line_color" format="color"/>
+        <attr name="me_line_size" format="dimension"/>
+    </declare-styleable>
+</resources>
