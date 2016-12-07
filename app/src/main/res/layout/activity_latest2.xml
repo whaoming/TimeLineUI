@@ -26,7 +26,6 @@
               app:layout_collapseParallaxMultiplier="0.7"
               android:layout_width="match_parent"
               android:layout_height="200dp">
-
               <RelativeLayout
                   android:layout_above="@+id/demo2"
                   android:layout_alignParentTop="true"
@@ -34,30 +33,32 @@
                   android:id="@+id/demo1"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
-                  android:orientation="vertical">
+                  >
               </RelativeLayout>
               <LinearLayout
                   android:id="@+id/demo2"
                   android:background="#ffffff"
                   android:layout_alignParentBottom="true"
                   android:orientation="vertical"
-
                   android:layout_width="match_parent"
                   android:layout_height="50dp">
               </LinearLayout>
             <LinearLayout
+                android:background="@drawable/border"
                 android:orientation="horizontal"
                 android:layout_alignParentBottom="true"
-                android:background="#ffffff"
                 android:layout_width="match_parent"
-                android:layout_margin="10dp"
-                android:layout_height="70dp">
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="80dp">
                 <ming.wxxiaomi.com.timelineui.weight.view.LatestTimeLine
+                    android:visibility="gone"
+                    android:layout_marginLeft="29dp"
                     android:id="@+id/time_marker"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     app:me_line_size="2dp"
-                    app:me_line_color="#000000"
+                    app:me_line_color="#9ccc65"
                      />
             </LinearLayout>
 
@@ -84,7 +85,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
-            android:padding="10dp" />
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            />
 
     </ming.wxxiaomi.com.timelineui.weight.util.MyNestedScrollView>
 

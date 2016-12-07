@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:baselineAligned="false"
+    android:orientation="horizontal">
+
+    <ming.wxxiaomi.com.timelineui.weight.view.LatestTimeLine
+        android:id="@+id/time_marker"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:me_below_text="评论"
+        app:me_line_color="#9ccc65"
+        app:me_line_size="2dp"
+        app:me_text_color="#bbbbbb"
+        app:me_text_size="10sp"
+        app:me_up_text="08-26" />
+
+
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:layout_marginRight="7dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginLeft="7dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/demo6"
+                android:scaleType="fitXY"
+                android:src="@mipmap/demo"
+                android:background="@drawable/border"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <RelativeLayout
+                android:background="#ffffff"
+                android:layout_below="@+id/demo6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:padding="10dp"
+                    android:textColor="#666666"
+                    android:id="@+id/demo5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="听说今天这里发生了很大的火灾gggg，不知道真的假的" />
+                <RelativeLayout
+                    android:id="@+id/demo8"
+                    android:layout_marginTop="8dp"
+                    android:padding="8dp"
+                    android:layout_below="@+id/demo5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                    <ImageView
+                        android:id="@+id/demo7"
+                        android:layout_alignParentLeft="true"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@mipmap/xiejinhao" />
+                    <ImageView
+                        android:layout_toRightOf="@+id/demo7"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@mipmap/xiejinhao" />
+                    <TextView
+                        android:layout_margin="5dp"
+                        android:textSize="10sp"
+                        android:layout_centerVertical="true"
+                        android:textColor="#bbbbbb"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="科技馆" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_below="@+id/demo8"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="#000000"
+                        android:text="wang:我知道"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+
+
+
+</LinearLayout>

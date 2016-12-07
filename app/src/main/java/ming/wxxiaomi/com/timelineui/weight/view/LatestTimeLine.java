@@ -54,14 +54,21 @@ public class LatestTimeLine extends View {
     private int point_size;
     private int line_color;
     private int line_size;
-    private int mMarkerSize = 25;
-    private String below_text = "评论";
-    private int padding_left = 5;
+
+    private int mMarkerSize = 30;
+    private String below_text="";
+    private int padding_left = 2;
     private int pading_bewteen = 2;
-    private int paddingRight = 5;
-    private String up_text = "08-16";
+    private int paddingRight = 2;
+    private String up_text="";
+
     private Rect mTimeBound;
     private Rect mOptionBound;
+
+    //模拟上下文字的距离
+    private int demo = 5;
+
+    private int topLine = 20;
 
     public LatestTimeLine(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -78,14 +85,15 @@ public class LatestTimeLine extends View {
                     break;
                 case R.styleable.LatestTimeLine_me_line_size:
                     line_size =  a.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
-                            1, getResources().getDisplayMetrics()));;
+                            10, getResources().getDisplayMetrics()));;
                     break;
                 case R.styleable.LatestTimeLine_me_point_color:
-                    point_color =  a.getColor(attr,0);
+                    mMarker = a.getDrawable(attr);
+//                    point_color =  a.getColor(attr,0);
                     break;
                 case R.styleable.LatestTimeLine_me_point_size:
                     point_size =  a.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
-                            1, getResources().getDisplayMetrics()));;
+                            10, getResources().getDisplayMetrics()));;
                     break;
                 case R.styleable.LatestTimeLine_me_text_color:
                     text_color = a.getColor(attr,0);
@@ -94,30 +102,69 @@ public class LatestTimeLine extends View {
                     text_size =  a.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
                             16, getResources().getDisplayMetrics()));;
                     break;
+
+                case R.styleable.LatestTimeLine_me_below_text:
+//                    text_size =  a.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
+//                            16, getResources().getDisplayMetrics()));;
+                    below_text = a.getString(attr);
+                    break;
+                case R.styleable.LatestTimeLine_me_up_text:
+                    up_text =  a.getString(attr);
+                    break;
+                case R.styleable.LatestTimeLine_me_padding_left:
+                    padding_left =  a.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
+                            10, getResources().getDisplayMetrics()));;
+                    break;
+                case R.styleable.LatestTimeLine_me_pading_bewteen:
+                    pading_bewteen =  a.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
+                            10, getResources().getDisplayMetrics()));;
+                    break;
+                case R.styleable.LatestTimeLine_me_padding_Right:
+                    paddingRight =  a.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
+                            10, getResources().getDisplayMetrics()));;
+                    break;
+                case R.styleable.LatestTimeLine_me_mMarkerSize:
+                    mMarkerSize =  a.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
+                            100, getResources().getDisplayMetrics()));;
+                    Log.i("wang","mMarkerSize:"+mMarkerSize);
+                    break;
+//                case R.styleable.LatestTimeLine_me_pading_bewteen:
+//                    text_size =  a.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
+//                            16, getResources().getDisplayMetrics()));;
+//                    break;
             }
 
         }
-        mMarker = mContext.getResources().getDrawable(R.drawable.marker);
+        if(mMarker==null){
+            mMarker = mContext.getResources().getDrawable(R.drawable.marker);
+        }
+
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mTimeBound = new Rect();
         mOptionBound = new Rect();
         mPaint.setTextSize(text_size);
+        mPaint.setColor(text_color);
         // 计算了描绘字体需要的范围
-        mPaint.getTextBounds(below_text, 0, below_text.length(), mOptionBound);
-        mPaint.getTextBounds(up_text, 0, up_text.length(), mTimeBound);
+        if(below_text!=""){
+            mPaint.getTextBounds(below_text, 0, below_text.length(), mOptionBound);
+        }
+        if(up_text!=""){
+            mPaint.getTextBounds(up_text, 0, up_text.length(), mTimeBound);
+        }
     }
-
 
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int w = paddingRight+mMarkerSize+padding_left+pading_bewteen+point_size+Math.max(mOptionBound.width(),mTimeBound.width());
+       // super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        //getPaddingLeft()+paddingRight+mMarkerSize+padding_left+pading_bewteen+point_size+
+        //Math.max(mOptionBound.width(),mTimeBound.width());
+        int w = 20+padding_left+Math.max(mOptionBound.width(),mTimeBound.width())
+                +pading_bewteen+mMarkerSize+paddingRight;
         int h =  getPaddingTop() + getPaddingBottom();
         int widthSize = resolveSizeAndState(w, widthMeasureSpec, 0);
         int heightSize = resolveSizeAndState(h, heightMeasureSpec, 0);
-
         setMeasuredDimension(widthSize, heightSize);
         initDrawable();
     }
@@ -129,18 +176,18 @@ public class LatestTimeLine extends View {
     }
 
     private void initDrawable() {
-        int pLeft = getPaddingLeft();
-        int pRight = getPaddingRight();
+//        int pLeft = getPaddingLeft();
+//        int pRight = getPaddingRight();
         int pTop = getPaddingTop();
-        int pBottom = getPaddingBottom();
-
-        int width = getWidth();// Width of current custom view
+//        int pBottom = getPaddingBottom();
+//
+//        int width = getWidth();// Width of current custom view
         int height = getHeight();
 
 
             int maxSize = Math.max(mTimeBound.width(),mOptionBound.width());
             if(mMarker != null) {
-                mMarker.setBounds(padding_left+maxSize+pading_bewteen,pTop,padding_left+maxSize+pading_bewteen+mMarkerSize,pTop+mMarkerSize );
+                mMarker.setBounds(padding_left+maxSize+pading_bewteen+5,pTop+topLine,padding_left+maxSize+pading_bewteen+mMarkerSize+5,pTop+mMarkerSize+topLine);
                 mBounds = mMarker.getBounds();
             }
 //        }
@@ -148,8 +195,8 @@ public class LatestTimeLine extends View {
         int centerX = mBounds.centerX();
         int lineLeft = centerX ;
 
-//                mStartLine.setBounds(lineLeft, 0, mLineSize + lineLeft, mBounds.top);
-        mEndLine.setBounds(lineLeft, mBounds.bottom, 2 + lineLeft, height-7);
+                mStartLine.setBounds(lineLeft, 0, 2 + lineLeft, mBounds.top);
+        mEndLine.setBounds(lineLeft, mBounds.bottom, 2 + lineLeft, height);
 
 
     }
@@ -157,8 +204,15 @@ public class LatestTimeLine extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawText(up_text,2,mTimeBound.height(),mPaint);
-        canvas.drawText(below_text,2,mTimeBound.height()+mOptionBound.height()+2,mPaint);
+        if(up_text!=""){
+
+            canvas.drawText(up_text,padding_left,mTimeBound.height()+topLine,mPaint);
+        }
+        if(below_text!=""){
+            canvas.drawText(below_text,padding_left+mTimeBound.width()-mOptionBound.width(),mTimeBound.height()+mOptionBound.height()+demo+topLine,mPaint);
+        }
+
+
         if(mMarker != null) {
             mMarker.draw(canvas);
         }
@@ -222,5 +276,9 @@ public class LatestTimeLine extends View {
         } else {
             return LineType.NORMAL;
         }
+    }
+
+    public int getLineWidth(){
+        return mBounds.centerX();
     }
 }

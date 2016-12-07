@@ -11,9 +11,12 @@
         android:id="@+id/time_marker"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:me_line_color="#666666"
+        app:me_line_color="#9ccc65"
         app:me_line_size="2dp"
-        app:me_text_size="12sp"
+        app:me_text_size="10sp"
+        app:me_below_text="评论"
+        app:me_up_text="08-26"
+        app:me_text_color="#bbbbbb"
          />
 
    <LinearLayout

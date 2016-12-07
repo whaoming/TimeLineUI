@@ -33,17 +33,16 @@ public class LatestActivity2 extends AppCompatActivity {
         collapsing_toolbar.setTitle("我是标题");
         setSupportActionBar(toolbar1);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
         for(int i = 1;i <21;i++) {
             MyModel m = new MyModel();
             m.type = (i%4);
             if(i%2==0) m.pics="asdasd";
             list.add(m);
         }
-
         adapter = new LatsetAdapter(list,this);
+
         mRecyclerView.setAdapter(adapter);
+
     }
 
     private RecyclerView.LayoutManager getLinearLayoutManager() {

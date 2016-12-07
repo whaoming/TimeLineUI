@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="me_point_color" format="color"/>
+    <attr name="me_point_size" format="dimension"/>
+    <attr name="me_text_color" format="color"/>
+    <attr name="me_text_size" format="dimension"/>
+    <attr name="me_line_color" format="color"/>
+    <attr name="me_line_size" format="dimension"/>
+
+    <attr name="me_below_text" format="string"/>
+    <attr name="me_up_text" format="string"/>
+    <attr name="me_padding_left" format="dimension"/>
+    <attr name="me_pading_bewteen" format="dimension"/>
+    <attr name="me_padding_Right" format="dimension"/>
+    <attr name="me_mMarkerSize" format="dimension"/>
 
     <declare-styleable name="LatestTimeLine">
-        <attr name="me_point_color" format="color"/>
-        <attr name="me_point_size" format="dimension"/>
-        <attr name="me_text_color" format="color"/>
-        <attr name="me_text_size" format="dimension"/>
-        <attr name="me_line_color" format="color"/>
-        <attr name="me_line_size" format="dimension"/>
+        <attr name="me_point_color" />
+        <attr name="me_point_size" />
+        <attr name="me_text_color" />
+        <attr name="me_text_size" />
+        <attr name="me_line_color" />
+        <attr name="me_line_size" />
+
+        <attr name="me_below_text" />
+        <attr name="me_up_text" />
+        <attr name="me_padding_left" />
+        <attr name="me_pading_bewteen"/>
+        <attr name="me_padding_Right"/>
+        <attr name="me_mMarkerSize"/>
     </declare-styleable>
 </resources>
