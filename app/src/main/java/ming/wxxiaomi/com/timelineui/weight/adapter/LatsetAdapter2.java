@@ -6,35 +6,28 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import java.util.List;
 
-import ming.wxxiaomi.com.timelineui.bean.MyModel;
-import ming.wxxiaomi.com.timelineui.bean.OptionType;
 import ming.wxxiaomi.com.timelineui.R;
+import ming.wxxiaomi.com.timelineui.bean.MyModel;
 
 /**
  * Created by Administrator on 2016/12/6.
  */
 
-public class LatsetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class LatsetAdapter2 extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private List<MyModel> list;
     private Context mContext;
     private int linePading;
-    private int mCount = 0;
 
-    public LatsetAdapter(List<MyModel> feedList, Context context) {
+
+    public LatsetAdapter2(List<MyModel> feedList, Context context) {
         list = feedList;
         this.mContext = context;
-    }
-
-    public void setCount(int count){
-        mCount = count;
     }
 
     @Override
@@ -110,7 +103,7 @@ public class LatsetAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public int getItemCount() {
-        return mCount;
+        return list.size();
     }
 
     public void setOption(TextView tv){

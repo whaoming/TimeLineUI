@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
@@ -12,6 +13,7 @@ import java.util.List;
 
 import ming.wxxiaomi.com.timelineui.bean.MyModel;
 import ming.wxxiaomi.com.timelineui.weight.adapter.LatsetAdapter;
+import ming.wxxiaomi.com.timelineui.weight.adapter.LatsetAdapter2;
 import ming.wxxiaomi.com.timelineui.weight.util.FullyLinearLayoutManager;
 
 public class LatestActivity2 extends AppCompatActivity {
@@ -19,7 +21,7 @@ public class LatestActivity2 extends AppCompatActivity {
     private FloatingActionButton btn_add;
     private RecyclerView mRecyclerView;
     private List<MyModel> list = new ArrayList<>();
-    private LatsetAdapter adapter;
+    private LatsetAdapter2 adapter;
     private CollapsingToolbarLayout collapsing_toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class LatestActivity2 extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(getLinearLayoutManager());
         mRecyclerView.setNestedScrollingEnabled(false);
+        mRecyclerView.setHasFixedSize(true);
         collapsing_toolbar.setTitle("我是标题");
         setSupportActionBar(toolbar1);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -39,13 +42,16 @@ public class LatestActivity2 extends AppCompatActivity {
             if(i%2==0) m.pics="asdasd";
             list.add(m);
         }
-        adapter = new LatsetAdapter(list,this);
-
+        adapter = new LatsetAdapter2(list,this);
         mRecyclerView.setAdapter(adapter);
 
     }
 
     private RecyclerView.LayoutManager getLinearLayoutManager() {
-        return new FullyLinearLayoutManager(this);
+//        return new FullyLinearLayoutManager(this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setSmoothScrollbarEnabled(true);
+        layoutManager.setAutoMeasureEnabled(true);
+        return layoutManager;
     }
 }

@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TimeLineUI.iml" filepath="$PROJECT_DIR$/TimeLineUI.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commonrefreshlayout/commonrefreshlayout.iml" filepath="$PROJECT_DIR$/commonrefreshlayout/commonrefreshlayout.iml" />
     </modules>
   </component>
 </project>
